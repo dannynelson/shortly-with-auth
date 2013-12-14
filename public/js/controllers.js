@@ -12,6 +12,7 @@ angular.module('shortly')
 })
 
 .controller('LinksController', function($scope, $http){
+  $scope.sort = "-visits";
   $http({
     method: 'GET',
     url: '/links'
