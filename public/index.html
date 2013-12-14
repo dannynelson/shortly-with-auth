@@ -1,15 +1,19 @@
 <!doctype html>
 <html ng-app="shortly">
   <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div ng-view></div>
-    <div ng-controller="MainController">
-      <input type="text" placeholder="Enter a name here">
-      <h1>Hello, {{ name }}!</h1>
-    </div>
-    <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-route.min.js"></script>
+    <h1>Shortly</h1>
+    <ul class='navigation'>
+      <li><a href='#/shorten'>Shorten</a></li>
+      <li><a href='#/links'>Links</a></li>
+    </ul>
+    <div class="container" ng-view></div>
+
+    <script src="lib/angular.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="lib/angular-route.js"></script>
   </body>
 </html>
