@@ -74,7 +74,6 @@ end
 
 ['/', "/create", "/links"].each do |path|
     before path do
-        redirect('/login') unless logged_in?
         # halt [401, {error: 'No token'}.to_json] unless logged_in? || api_user?
     end
 end
@@ -84,23 +83,23 @@ end
 ###########################################################
 
 get '/' do
-    erb :index
-    # File.read(File.join('public', 'index.html'))
+    # erb :index
+    File.read(File.join('public', 'index.html'))
 end
 
-get '/login' do
-    erb :login
-end
+# get '/login' do
+#     erb :login
+# end
 
-post '/login' do
-    user = User.find_by_username(params[:username])
-    if user.nil?
-        redirect '/signup'
-    else
-        session[:identifier] = user.identifier if user.authenticate(params[:password])
-        redirect '/'
-    end
-end
+# post '/login' do
+#     user = User.find_by_username(params[:username])
+#     if user.nil?
+#         redirect '/signup'
+#     else
+#         session[:identifier] = user.identifier if user.authenticate(params[:password])
+#         redirect '/'
+#     end
+# end
 
 post '/api/login' do
     user = User.find_by_username(params[:username])
