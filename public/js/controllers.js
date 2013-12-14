@@ -9,4 +9,13 @@ angular.module('shortly')
     });
     $scope.link = '';
   };
+})
+
+.controller('LinksController', function($scope, $http){
+  $http({
+    method: 'GET',
+    url: '/links'
+  }).success(function(data) {
+    $scope.links = data;
+  });
 });
