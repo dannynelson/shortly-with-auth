@@ -1,7 +1,9 @@
 angular.module('shortly')
-.factory('Session', function() {
+.factory('Session', function($cookieStore) {
   var session = {
-    loggedIn: false
+    logIn: function() {
+      $cookieStore.put('logIn', true);
+    }
   };
 
   return session;

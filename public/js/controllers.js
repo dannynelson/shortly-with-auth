@@ -37,7 +37,7 @@ angular.module('shortly')
         password: $scope.password
       }
     }).success(function () {
-      Session.loggedIn = true;
+      Session.logIn();
       $location.path('/links');
     });
   };
