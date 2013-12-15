@@ -10,8 +10,20 @@ angular.module('shortly', ['ngRoute'])
       controller: "LinksController",
       templateUrl: 'templates/links.html'
     })
-    .otherwise({
-      template: '<h1>404 Not Found</h1>'
+    .when('/auth', {
+      controller: "LoginController",
+      templateUrl: "templates/login.html"
     });
+    // .otherwise({
+    //   template: '<h1>404 Not Found</h1>'
+    // });
+})
+
+.run(function($rootScope, $location, Session) {
+  $rootScope.$on('$routeChangeStart', function (event, next, current) {
+    if (!Session.loggedIn) {
+      if (next.$$route.controller !== 'LoginController') $location.path('/auth');
+    }
+  });
 });
 

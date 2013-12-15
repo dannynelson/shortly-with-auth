@@ -1,0 +1,18 @@
+<h1> {{ formType }} </h1>
+<form ng-submit="submit()">
+    <div>
+      <label for="username">Username:</label>
+      <input ng-model="username" type="text"/>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input ng-model="password" type="password"/>
+    </div>
+    <div>
+      <input type="submit" value="{{ formType }}">
+    </div>
+</form>
+<p>
+  <a ng-show="formType === 'login'" ng-click="formType='signup'" href="#/auth">Create an Account &rarr;</a>
+  <a ng-show="formType !== 'login'" ng-click="formType='login'" href="#/auth">Go to login page &rarr;</a>
+<p>
